@@ -1,11 +1,19 @@
 import { Injectable } from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
+import { Model } from 'mongoose';
 import { CreateMemberDto } from './dto/create-member.dto';
 import { UpdateMemberDto } from './dto/update-member.dto';
+import { Member, MemberDocument } from './member.model';
 
 @Injectable()
 export class MemberService {
-  create(createMemberDto: CreateMemberDto) {
-    return 'This action adds a new member';
+  constructor(
+    @InjectModel('member') private readonly memberModel: Model<MemberDocument>,
+  ) {}
+
+  async create(createMemberDto: CreateMemberDto): Promise<Member> {
+    const newMember = new this.memberModel(createMemberDto);
+    return newMember.save();
   }
 
   findAll() {
