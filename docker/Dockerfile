@@ -1,4 +1,6 @@
-FROM node:16
+FROM node:18-alpine
+
+WORKDIR /var/www/school
 
 RUN npm i -g @nestjs/cli
 

@@ -1,14 +1,21 @@
-#docker-compose file
-version: '3'
+version: '3.5'
 
 services:
-  nestapp:
+  app:
     container_name: nestapp
-    image: nestapp:1.0.0
     build:
-      context: .
+      context: ./docker
       dockerfile: Dockerfile
+    working_dir: /var/www/school
     ports:
-      - '3000:3000'
+      - 3000:80
     env_file:
       - .env
+    networks:
+      - schoolnet
+    volumes:
+      - .:/var/www/school
+
+networks:
+  schoolnet:
+    driver: bridge
