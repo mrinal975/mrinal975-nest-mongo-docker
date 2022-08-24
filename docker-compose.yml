@@ -4,7 +4,7 @@ services:
   app:
     container_name: main
     build:
-      context: .
+      context: ./docker
       dockerfile: Dockerfile
       target: development
     volumes:
