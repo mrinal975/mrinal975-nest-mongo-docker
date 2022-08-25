@@ -1,10 +1,9 @@
 import * as mongoose from 'mongoose';
 
-const Column = {
-  title: String,
-  description: String,
-  body: String,
-  author: String,
-  date_posted: String,
-};
-export const BlogSchema = new mongoose.Schema({ Column });
+export const BlogSchema = new mongoose.Schema({
+  title: { type: String, required: true },
+  description: { type: String, required: true },
+  body: { type: String, required: true },
+  author: { type: String, required: true },
+  date_posted: { type: String, required: true },
+});
