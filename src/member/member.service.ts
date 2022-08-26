@@ -8,7 +8,7 @@ import { Member, MemberDocument } from './member.model';
 @Injectable()
 export class MemberService {
   constructor(
-    @InjectModel('member') private readonly memberModel: Model<MemberDocument>,
+    @InjectModel(Member.name) private readonly memberModel: Model<MemberDocument>,
   ) {}
 
   async create(createMemberDto: CreateMemberDto): Promise<Member> {
