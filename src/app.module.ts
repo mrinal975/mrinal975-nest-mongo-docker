@@ -4,6 +4,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UsersModule } from './users/users.module';
 import { BreedsModule } from './breeds/breeds.module';
+import { BlogModule } from './blog/blog.module';
 
 @Module({
   imports: [
@@ -13,6 +14,7 @@ import { BreedsModule } from './breeds/breeds.module';
       `mongodb://localhost:27017/test_db`,
     ),
     BreedsModule,
+    BlogModule
   ],
   controllers: [AppController],
   providers: [AppService],
