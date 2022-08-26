@@ -1,26 +1,31 @@
 import { Injectable } from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
+import { Model } from 'mongoose';
+import { Breed, BreedDocument } from 'src/schemas/breed.schemas';
 import { CreateBreedDto } from './dto/create-breed.dto';
 import { UpdateBreedDto } from './dto/update-breed.dto';
 
 @Injectable()
 export class BreedsService {
-  create(createBreedDto: CreateBreedDto) {
-    return 'This action adds a new breed';
+  constructor(@InjectModel(Breed.name) private breedModel:Model<BreedDocument>){}
+
+  async create(createBreedDto: CreateBreedDto) {
+    const createBreed = await new this.breedModel(createBreedDto);
+    return createBreed.save();
   }
 
-  findAll() {
-    return `This action returns all breeds`;
+  async findAll():Promise<Breed[]> {
+    return  await this.breedModel.find().exec();
   }
-
-  findOne(id: number) {
+  async findOne(id: number) {
     return `This action returns a #${id} breed`;
   }
 
-  update(id: number, updateBreedDto: UpdateBreedDto) {
+  async update(id: number, updateBreedDto: UpdateBreedDto) {
     return `This action updates a #${id} breed`;
   }
 
-  remove(id: number) {
+  async remove(id: number) {
     return `This action removes a #${id} breed`;
   }
 }
