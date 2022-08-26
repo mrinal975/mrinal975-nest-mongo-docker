@@ -3,6 +3,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UsersModule } from './users/users.module';
+import { BreedsModule } from './breeds/breeds.module';
 
 @Module({
   imports: [
@@ -11,6 +12,7 @@ import { UsersModule } from './users/users.module';
       //Replace this line with the one Cluster > Connect > Connect your Application
       `mongodb://localhost:27017/test_db`,
     ),
+    BreedsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
