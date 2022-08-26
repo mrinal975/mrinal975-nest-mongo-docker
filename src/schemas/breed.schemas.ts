@@ -5,8 +5,11 @@ export type BreedDocument = Breed & Document;
 
 @Schema()
 export class Breed{
-    @Prop()
+    @Prop({required:true})
     name: string;
+
+    @Prop({required:true})
+    description:string
 }
 
 export const BreedSchema = SchemaFactory.createForClass(Breed);

@@ -17,15 +17,16 @@ export class BreedsService {
   async findAll():Promise<Breed[]> {
     return  await this.breedModel.find().exec();
   }
-  async findOne(id: number) {
-    return `This action returns a #${id} breed`;
+
+  async findOne(name: string):Promise<Breed> {
+    return await this.breedModel.findOne({name})
   }
 
-  async update(id: number, updateBreedDto: UpdateBreedDto) {
-    return `This action updates a #${id} breed`;
+  async update(name: string, updateBreedDto: UpdateBreedDto) {
+    return await this.breedModel.updateOne({name},{ $set:{ ...updateBreedDto} });
   }
 
-  async remove(id: number) {
-    return `This action removes a #${id} breed`;
+  async remove(name: string) {
+    return this.breedModel.deleteOne({name});
   }
 }

@@ -17,18 +17,18 @@ export class BreedsController {
     return this.breedsService.findAll();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.breedsService.findOne(+id);
+  @Get(':name')
+  findOne(@Param('name') id: string) {
+    return this.breedsService.findOne(id);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateBreedDto: UpdateBreedDto) {
-    return this.breedsService.update(+id, updateBreedDto);
+  @Patch(':name')
+  update(@Param('name') id: string, @Body() updateBreedDto: UpdateBreedDto) {
+    return this.breedsService.update(id, updateBreedDto);
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.breedsService.remove(+id);
+  @Delete(':name')
+  remove(@Param('name') name: string) {
+    return this.breedsService.remove(name);
   }
 }
