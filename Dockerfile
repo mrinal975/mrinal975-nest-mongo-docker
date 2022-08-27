@@ -14,7 +14,7 @@ RUN npm install -g npm@8.18.0
 COPY . .
 
 # Creates a "dist" folder with the production build
-RUN npm run --watch
+RUN npm run start:dev
 
 # Start the server using the production build
 CMD [ "node", "dist/main.js" ]

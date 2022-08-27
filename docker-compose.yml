@@ -1,44 +1,4 @@
 version: '3.6'
-
-# services:
-#   app:
-#     container_name: main
-#     build:
-#       context: ./docker
-#       dockerfile: Dockerfile
-#       target: development
-#     volumes:
-#       - .:/usr/src/app
-#     ports:
-#       - 3000:3000
-#     command: npm run start:debug
-#     env_file:
-#       - .env
-#     networks:
-#       - webnet
-#     depends_on:
-#       - mongo_db
-
-#   mongo_db:
-#     container_name: mongo_db
-#     hostname: '${MONGO_HOST}'
-#     image: mongo-focal
-#     networks:
-#       - webnet
-#     volumes:
-#       - .:/data/db
-#     environment:
-#       MONGO_INITDB_ROOT_USERNAME: '${MONGO_ATLAS_USER}'
-#       MONGO_INITDB_ROOT_PASSWORD: '${MONGO_ATLAS_PASSWORD}'
-#       MONGO_INITDB_DATABASE: '${MONGO_ATLAS_DB}'
-#     expose:
-#       - '27017'
-#     ports:
-#       - 3000:3000
-# networks:
-#   webnet:
-#     driver: bridge
-
 services:
   app:
     container_name: main
