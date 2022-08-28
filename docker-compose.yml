@@ -1,7 +1,7 @@
 version: '3.6'
 services:
   app:
-    container_name: main
+    container_name: app
     build:
       context: .
       dockerfile: Dockerfile
@@ -24,6 +24,7 @@ services:
     environment:
       - MONGODB_ADVERTISED_HOSTNAME=mongodb-primary
       - MONGODB_REPLICA_SET_MODE=primary
+      - MONGODB_ROOT_USER=root
       - MONGODB_ROOT_PASSWORD=password123
       - MONGODB_REPLICA_SET_KEY=replicasetkey123
     volumes:
